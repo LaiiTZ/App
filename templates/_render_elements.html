@@ -1,0 +1,62 @@
+    <!--macro para mostrar mensajes-->
+    {% macro render_message(messages) %}
+      <!--buscamos mensajes-->
+      {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                <!--si hay mensajes-->
+                {% if messages %}
+                <!--ciclo for para recorrer toda la lista de mensajes-->
+                {% for message in messages %}
+				<li class="error">{{ message }}</li>
+				        {% endfor %}
+                {% endif %}
+                {% endwith %}
+      {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                <!--si hay mensajes-->
+                {% if messages %}
+                <!--ciclo for para recorrer toda la lista de mensajes-->
+                {% for message in messages %}
+				<li class="success">{{ message }}</li>
+				        {% endfor %}
+                {% endif %}
+                {% endwith %}
+    {% endmacro %}
+    <!-------------------------------------->
+    <!-------macro para mostrar tabla------->
+    <!-------------------------------------->
+    {% macro render_table(messages) %}
+      <!--buscamos mensajes-->
+      {% with usernames = get_flashed_messages(category_filter=["username"]) %}
+        <!--si hay mensajes-->
+        {% if messages %}
+        <table>
+            <tr>
+                <td>"usernames"</td>
+            </tr>
+        <!--ciclo for para recorrer toda la lista de mensajes-->
+        {% for message in usernames %}
+            <tr>
+                <td>{{ message }}</td>
+            </tr>
+		{% endfor %}
+        </table>
+        {% endif %}
+      {% endwith %}
+      {% with passwords = get_flashed_messages(category_filter=["password"]) %}
+      <!--si hay mensajes-->
+      {% if messages %}
+      <table>
+            <tr>
+                <td>"passwords"</td>
+            </tr>
+      <!--ciclo for para recorrer toda la lista de mensajes-->
+      {% for message in passwords %}
+            <tr>
+                <td>{{ message }}</td>
+            </tr>
+      {% endfor %}
+      </table>
+      {% endif %}
+{% endwith %} 
+    {% endmacro %}
+
+
